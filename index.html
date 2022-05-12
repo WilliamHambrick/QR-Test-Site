@@ -38,7 +38,14 @@
               required data -->
           <input type="text" size="60" 
             maxlength="60" class="form-control"
-            id="content" placeholder="Enter Product Number" value=""/>
+            id="order" placeholder="Enter Order Number" value=""/>
+          <input type="text" size="60" 
+            maxlength="60" class="form-control"
+            id="product" placeholder="Enter Product Number" value=""/>
+          <input type="text" size="60" 
+            maxlength="60" class="form-control"
+            id="storage" placeholder="Enter Storage Area" value=""/>
+
         </div>
       </div>
       <div class="form-group">
@@ -86,7 +93,7 @@
         // Generate the link that would be
         // used to generate the QR Code
         // with the given data 
-        let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode("https://williamhambrick.github.io/QR-Test-Site/item.html?prodnum="+$('#content').val()) + '&chs=160x160&chld=L|0'
+        let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode("https://williamhambrick.github.io/QR-Test-Site/item.html?ordernum="+ $('#order').val() +"?prodnum="+$('#product').val() + "?storage="+$('#storage').val()) + '&chs=160x160&chld=L|0'
   
         // Replace the src of the image with
         // the QR code image
