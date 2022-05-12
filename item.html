@@ -44,14 +44,14 @@
       <div class="form-group">
       </div>
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10" id="add-here">
+        <div class="col-sm-offset-2 col-sm-10" id="data-table" hidden>
             <h2> Returned Data </h2>
             <br>
             <table id="table">
               <tr>
                 <th class="big">Order Number</th>
                 <th class="big">Product Number</th>
-                <th class="small">Storage Area</th>
+                <th class="big">Storage Area</th>
               </tr>
             </table>
         </div>
@@ -93,18 +93,26 @@
         var storage = getParameterByName("storage");
 
         if(order !=null && prod != null && storage!=null){
-          alert("Order Number: "+order + "\nProduct Number: " + prod + "\nStorage Location: " + storage)
-          var row = document.getElementById("table").insertRow(1);
-          row.insertCell(0).innerHTML = order;
-          row.insertCell(1).innerHTML = prod;
-          row.insertCell(2).innerHTML = storage;
-
+          //Test Print
+          //alert("Order Number: "+order + "\nProduct Number: " + prod + "\nStorage Location: " + storage)
+          
           //Generate the QRCode's URL for the image to be generated
           let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode("https://williamhambrick.github.io/QR-Test-Site/item.html?ordernum=" + order + "?prodnum=" + prod + "?storage=" + storage) + '&chs=160x160&chld=L|0'
   
           // Replace the src of the image with
           // the QR code image
           $('.qr-code').attr('src', finalURL);
+
+          //add row
+          var row = document.getElementById("table").insertRow(1);
+          
+          //add data from params to row
+          row.insertCell(0).innerHTML = order;
+          row.insertCell(1).innerHTML = prod;
+          row.insertCell(2).innerHTML = storage;
+
+          //show the table 
+          document.getElementById("data-table").hidden = false
         }
     };
   </script>
