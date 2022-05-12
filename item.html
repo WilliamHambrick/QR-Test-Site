@@ -116,7 +116,7 @@
         var storage = getParameterByName("storage");
 
         if(order !=null && prod != null && storage!=null){
-          alert(order + " - " + prod + " - " + storage)
+          alert("Order Number: "+order + "\nProduct Number: " + prod + "\nStorage Location: " + storage)
           var row = document.getElementById("table").insertRow(1);
           row.insertCell(0).innerHTML = order;
           row.insertCell(1).innerHTML = prod;
