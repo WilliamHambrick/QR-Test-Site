@@ -95,12 +95,28 @@
         .html();
     }
   
+    let getParameterByName = function() {
+      let queries = location.search.substring(1).split('?'),
+          processed = {};
+      for (let query of queries) {
+          let [name, value] = query.split('=');
+          processed[decodeURIComponent(name)] = value? decodeURIComponent(value) : '';
+      }
+  
+      return function(name) {
+          if (typeof processed[name] !== 'undefined')
+              return processed[name];
+          else
+              return null; 
+      };
+    }();
+
     window.onload = function() {
         var url_string = window.location.href;
         var url = new URL(url_string);
-        var order = url.searchParams.get("ordernum");
-        var prod = url.searchParams.get("prodnum");
-        var storage = url.searchParams.get("storage");
+        var order = getParameterByName("ordernum");
+        var prod = getParameterByName("prodnum");
+        var storage = getParameterByName("storage");
         alert(order + " - " + prod + " - " + storage)
         if(order !=null && prod != null && storage!=null){
           var row = document.getElementById("table").insertRow(0);
