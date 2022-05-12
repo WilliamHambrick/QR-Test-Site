@@ -37,7 +37,9 @@
       <!-- Get a Placeholder image initially,
        this will change according to the
        data entered later -->
-      <img src= "https://chart.googleapis.com/chart?cht=qr&chl=https://williamhambrick.github.io/QR-Test-Site/&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" />
+       <p><a id="qr-link" href="https://williamhambrick.github.io/QR-Test-Site/">
+        <img src= "https://chart.googleapis.com/chart?cht=qr&chl=https://williamhambrick.github.io/QR-Test-Site/&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" />
+      </a></p>
     </div>
   
     <div class="form-horizontal">
@@ -95,10 +97,10 @@
         if(order !=null && prod != null && storage!=null){
           //Test Print
           //alert("Order Number: "+order + "\nProduct Number: " + prod + "\nStorage Location: " + storage)
-          
+          let url = htmlEncode("https://williamhambrick.github.io/QR-Test-Site/item.html?ordernum=" + order + "?prodnum=" + prod + "?storage=" + storage);
           //Generate the QRCode's URL for the image to be generated
-          let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + htmlEncode("https://williamhambrick.github.io/QR-Test-Site/item.html?ordernum=" + order + "?prodnum=" + prod + "?storage=" + storage) + '&chs=160x160&chld=L|0'
-  
+          let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + url + '&chs=160x160&chld=L|0';
+          document.getElementById("qr-link").href = url;
           // Replace the src of the image with
           // the QR code image
           $('.qr-code').attr('src', finalURL);
