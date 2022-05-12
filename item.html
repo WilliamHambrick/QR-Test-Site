@@ -101,6 +101,7 @@
         var order = url.searchParams.get("ordernum");
         var prod = url.searchParams.get("prodnum");
         var storage = url.searchParams.get("storage");
+        alert(order + " - " + prod + " - " + storage)
         if(order !=null && prod != null && storage!=null){
           var row = document.getElementById("table").insertRow(0);
           row.inserCell(0).innerHTML = order;
